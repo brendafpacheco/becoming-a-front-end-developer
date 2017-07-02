@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Emojis</title>
+  </head>
+  <body>
+
+    <h1>Emojis</h1>
+
+    <label>O que você está pensando?</br></label>
+
+    <textarea rows="8" cols="80"></textarea>
+
+    <p>
+      <output>0</output> caractere(s)
+    </p>
+
+    <button>Postar!</button>
+
+    <button>Limpar postgens</button>
+
+    <div id="postagens"></div>
+
+
+    <script>
+      var texto = document.getElementsByTagName('textarea')[0];
+      texto.setAttribute('onkeypress', "max(this)");
+      texto.setAttribute('onkeyup', "max(this)");
+
+      var output = document.getElementsByTagName('output')[0];
+      output.setAttribute('id', "digitado");
+
+/**/    function max(txarea) {
+        var total = 140;
+        var tam = txarea.value.length;
+        var str = "";
+        str = str + tam;
+        output.innerHTML = str;
+
+        if(tam > total){
+          var aux = txarea.value;
+          txarea.value = aux.substring(0,total);
+          output.innerHTML = total;
+        }
+      }
+
+      var button1 = document.getElementsByTagName('button')[0];
+      button1.setAttribute('onclick', "adc()");
+
+      var div = document.getElementById('postagens');
+
+/**/    function adc() {
+        var br = document.createElement('br');
+        var paragraph = document.createElement('p');
+
+
+        var sleeping = '<img src="Emoji/1f634.png" width="16" height="16" alt="sleeping"/>';
+        var yum = '<img src="Emoji/1f60b.png" width="16" height="16" alt="yum"/>';
+        var joy = '<img src="Emoji/1f602.png" width="16" height="16" alt="joy"/>';
+        var smiley = '<img src="Emoji/1f603.png" width="16" height="16" alt="smiley"/>';
+        var rage = '<img src="Emoji/1f621.png" width="16" height="16" alt="rage"/>';
+        var angry = '<img src="Emoji/1f620.png" width="16" height="16" alt="angry"/>';
+        var confused = '<img src="Emoji/1f615.png" width="16" height="16" alt="confused"/>';
+        var sunglasses = '<img src="Emoji/1f60e.png" width="16" height="16" alt="sunglasses"/>';
+        var hurt_eyes = '<img src="Emoji/1f60d.png" width="16" height="16" alt="hurt_eyes"/>';
+        var kissing_heart = '<img src="Emoji/1f618.png" width="16" height="16" alt="kissing_heart"/>';
+        var rolling_eyes = '<img src="Emoji/1f644.png" width="16" height="16" alt="rolling_eyes"/>';
+        var smirk = '<img src="Emoji/1f60f.png" width="16" height="16" alt="smirk"/>';
+        var confused = '<img src="Emoji/1f615.png" width="16" height="16" alt="confused"/>';
+        var grimacing = '<img src="Emoji/1f62c.png" width="16" height="16" alt="grimacing"/>';
+        var scream = '<img src="Emoji/1f631.png" width="16" height="16" alt="scream"/>';
+        var grin = '<img src="Emoji/1f601.png" width="16" height="16" alt="grin"/>';
+
+
+        paragraph.innerHTML = texto.value;
+        paragraph.innerHTML = paragraph.innerHTML.replace(":sleeping:",sleeping);
+        paragraph.innerHTML = paragraph.innerHTML.replace(":yum:",yum);
+        paragraph.innerHTML = paragraph.innerHTML.replace(":joy:",joy);
+        paragraph.innerHTML = paragraph.innerHTML.replace(":smiley:",smiley);
+        paragraph.innerHTML = paragraph.innerHTML.replace(":rage:",rage);
+        paragraph.innerHTML = paragraph.innerHTML.replace(":angry:",angry );
+        paragraph.innerHTML = paragraph.innerHTML.replace(":confused:",confused);
+        paragraph.innerHTML = paragraph.innerHTML.replace(":sunglasses:",sunglasses);
+        paragraph.innerHTML = paragraph.innerHTML.replace(":hurt_eyes:",hurt_eyes);
+        paragraph.innerHTML = paragraph.innerHTML.replace(":kissing_heart:",kissing_heart);
+        paragraph.innerHTML = paragraph.innerHTML.replace(":rolling_eyes:",rolling_eyes);
+        paragraph.innerHTML = paragraph.innerHTML.replace(":smirk:",smirk);
+        paragraph.innerHTML = paragraph.innerHTML.replace(":confused:",confused);
+        paragraph.innerHTML = paragraph.innerHTML.replace(":grimacing:",grimacing );
+        paragraph.innerHTML = paragraph.innerHTML.replace(":scream:",scream);
+        paragraph.innerHTML = paragraph.innerHTML.replace(":grin:",grin);
+
+
+        postagens.appendChild(paragraph);
+
+        postagens.appendChild(br);
+
+        texto.value = "";
+        output.innerHTML = 0;
+
+      }
+
+      var button2 = document.getElementsByTagName('button')[1];
+      button2.setAttribute('onclick', "del()");
+
+/**/    function del() {
+        postagens.innerHTML = "";
+      }
+
+    </script>
+  </body>
+</html>

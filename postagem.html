@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Postagem</title>
+  </head>
+  <body>
+
+    <h1>Postagem</h1>
+
+    <label>O que você está pensando?</br></label>
+
+    <textarea rows="8" cols="80"></textarea>
+    <p>
+      <output>0</output> caractere(s)
+    </p>
+    <button>Postar!</button>
+
+    <button>Limpar!</button>
+    <div id="postagens"></div>
+
+
+      <script>
+        var texto = document.getElementsByTagName('textarea')[0];
+        texto.setAttribute('onkeypress', "max(this)");
+        texto.setAttribute('onkeyup', "max(this)");
+
+        var output = document.getElementsByTagName('output')[0];
+        output.setAttribute('id', "digitado");
+
+/**/    function max(txarea) {
+          var total = 140;
+          var tam = txarea.value.length;
+          var str = "";
+          str = str + tam;
+          output.innerHTML = str;
+
+          if(tam > total){
+            var aux = txarea.value;
+            txarea.value = aux.substring(0,total);
+            output.innerHTML = total;
+          }
+        }
+
+        var button = document.getElementsByTagName('button')[0];
+        button.setAttribute('onclick',"adc()");
+
+        var button2 = document.getElementsByTagName('button')[1];
+        button2.setAttribute('onclick',"del()");
+
+        var body = document.getElementsByTagName('body')[0];
+        var div = document.getElementById('postagens');
+
+/**/    function adc() {
+          var br = document.createElement('br');
+          var paragraph = document.createElement('p');
+
+            paragraph.innerHTML = texto.value;
+
+            postagens.appendChild(paragraph);
+
+            postagens.appendChild(br);
+
+            texto.value = "";
+            output.innerHTML = 0;
+        }
+
+/**/    function del(){
+          postagens.innerHTML="";
+        }
+
+    </script>
+  </body>
+</html>
